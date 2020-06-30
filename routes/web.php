@@ -30,4 +30,4 @@ Route::get('/admin/logout', 'AuthController@logout')->name('admin.logout');
 
 Route::post('/admin/login/do', 'AuthController@autentica')->name('admin.login.do');
 
-//Route::get('/auth/register', '../RegisterController@create')->name('auth.register');
+Route::get('/auth/register', 'auth\RegisterController@create')->name('auth.register');

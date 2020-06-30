@@ -31,15 +31,10 @@
                 margin-bottom:12%;
                 color:#fff;
             }
-            .login-form-2{
-                padding: 9%;
-                background: #f05837;
-                box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-            }
-            .login-form-2 h3{
+            .login-form-1 label{
                 text-align: center;
-                margin-bottom:12%;
-                color: #fff;
+                /*margin-bottom:12%;*/
+                color:#fff;
             }
             .btnSubmit{
                 font-weight: 600;
@@ -63,11 +58,11 @@
     </head>
 
     <body>
-    <form method="post" action="{{route('admin.login.do')}}">
-        @csrf    
-        <div class="container login-container">
+        <form method="post" action="{{route('admin.login.do')}}">
+            @csrf    
+            <div class="container login-container">
                 <div class="row">
-                    <div class="col-md-6 login-form-1">
+                    <div class="col-md-12 login-form-1">
                         <h3>Login</h3>
                         
                             @if($errors->all())
@@ -78,18 +73,36 @@
                                 @endforeach
                             @endif
 
-                            <div class="form-group">
-                                <input name="email" type="text" class="form-control" placeholder="Email*" value="" required/>
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+                                <div class="col-md-6">
+                                    <input id="email" type="text" class="form-control" name="email" value="" required autocomplete="email" autofocus placeholder="Email">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input name="password" type="password" class="form-control" placeholder="Senha*" value="" required/>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Senha</label>
+                                <div class="col-md-6">
+                                    <input id="password" type="text" class="form-control" name="password" value="" required autocomplete="password" autofocus placeholder="Senha">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="submit" class="btnSubmit" value="Login" />
+
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btnSubmit">
+                                        Login
+                                    </button>
+                                </div>
                             </div>
-                            <!-- div class="form-group">
-                                <a href="#" class="btnForgetPwd">Esqueceu a senha?</a>
-                            </div-->
+
+                            <br>
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <a href="{{route('register')}}" class="btnSubmit">Criar Login</a>
+                                </div>
+                            </div>
+
+                            
                         
                     </div>
                 </div>

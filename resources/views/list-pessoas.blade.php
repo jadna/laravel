@@ -51,8 +51,7 @@
                             <span class="glyphicon glyphicon-pencil"></span>
                             <span id="underline">Cadastros</span> 
                             <span class="caret"></span></a>
-                        <ul class="dropdown-menu">                           
-                            <li><a href="#">Usuários</a></li>                                               
+                        <ul class="dropdown-menu">                                                                         
                             <li><a href="{{route('pessoa.create')}}">Clientes</a></li>                                               
                         </ul>
                     </li>
@@ -63,7 +62,7 @@
                             <img src="{{URL::asset('img/favicon.ico')}}" 
                                  class="img-circle" width="26" height="26" 
                                  style="margin-top: -3px"> 
-                            <span id="underline">Jadna Almeida</span> 
+                            <span>{{Auth::user()->name}}</span> 
                         </a>                      
                     </li>
                     <li><a href="{{route('admin.logout')}}" 

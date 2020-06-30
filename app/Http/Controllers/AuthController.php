@@ -14,10 +14,8 @@ class AuthController extends Controller
 
         if(Auth::check() === true){
             //return view('admin.login');
-            $usuario = auth()->user();
-            var_dump($usuario);
             $pessoas = Pessoa::all();
-            return view('list-pessoas', compact('pessoas', 'usuario'));
+            return view('list-pessoas', compact('pessoas'));
         }
 
         return redirect()->route('admin.login');
