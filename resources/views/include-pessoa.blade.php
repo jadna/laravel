@@ -63,7 +63,7 @@
                             <span id="underline">Jadna Almeida</span> 
                         </a>                      
                     </li>
-                    <li><a href="#" 
+                    <li><a href="{{route('admin.logout')}}" 
                            style="text-decoration: none">
                             <span class="glyphicon glyphicon-log-in"></span> 
                             <span id="underline">Sair</span></a></li>  

@@ -21,6 +21,8 @@ class CreatePessoasTable extends Migration
             $table->string('rg', 20)->nullable()->default(NULL);
             $table->string('local_nasc', 2);
             $table->string('telefone', 11)->nullable()->default(NULL);
+            $table->integer('usuario_cadastro');
+            $table->integer('usuario_update')->nullable()->default(NULL);
             //$table->timestamps('data_cad');
            // $table->timestamps('data_atu');
             $table->timestamps();

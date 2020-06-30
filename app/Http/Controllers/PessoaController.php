@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pessoa;
+use Auth;
 
 class PessoaController extends Controller
 {
     
     public function index(){
+
         $pessoas = Pessoa::all();
         return view('list-pessoas', compact('pessoas', 'cpf'));
     }
@@ -19,6 +21,7 @@ class PessoaController extends Controller
     }
 
     public function store(Request $request) {
+
         $pessoa = new Pessoa;
         $pessoa->nome = $request->nome;
         $pessoa->cpf = $request->cpf;
@@ -26,6 +29,9 @@ class PessoaController extends Controller
         $pessoa->data_nasc = $request->data_nasc;
         $pessoa->local_nasc = $request->local_nasc;
         $pessoa->telefone = $request->telefone;
+
+        // Pega o ID do usuario logado
+        $pessoa->usuario_cadastro =  Auth::user()->id;
 
         $data_aniver = $pessoa->data_nasc;
         $idade = \Carbon\Carbon::parse($data_aniver)->age;
@@ -55,7 +61,6 @@ class PessoaController extends Controller
 
     public function edit($id) {
         $pessoa = Pessoa::findOrFail($id);
-        var_dump($pessoa);
         return view('alter-pessoa', compact('pessoa'));
     }
 
@@ -68,6 +73,10 @@ class PessoaController extends Controller
         $pessoa->local_nasc = $request->local_nasc;
         $pessoa->telefone = $request->telefone;
 
+        // Pega o ID do usuario logado
+        $pessoa->usuario_update =  Auth::user()->id;
+
+        // Faz a validação de acordo a especificação do projeto
         $data_aniver = $pessoa->data_nasc;
         $idade = \Carbon\Carbon::parse($data_aniver)->age;
 
@@ -84,7 +93,7 @@ class PessoaController extends Controller
             return redirect()->back();
 
         }
-        
+
         $pessoa->save();
         return redirect()->route('pessoa.index')->with('message', 'Cadastro alterado com sucesso!');
     }
