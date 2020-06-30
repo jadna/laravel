@@ -79,7 +79,7 @@
                             @endif
 
                             <div class="form-group">
-                                <input name="email" type="text" class="form-control" placeholder="Email*" value="jadna.ac@gmail.com" required/>
+                                <input name="email" type="text" class="form-control" placeholder="Email*" value="" required/>
                             </div>
                             <div class="form-group">
                                 <input name="password" type="password" class="form-control" placeholder="Senha*" value="" required/>
